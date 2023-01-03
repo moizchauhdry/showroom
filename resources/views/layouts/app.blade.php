@@ -14,6 +14,7 @@
     <script src="{{ asset('js/jquery.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{asset('plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+    <script src="https://unpkg.com/imask"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -121,6 +122,8 @@
             @yield('content')
         </main>
     </div>
+
+    @stack('js')
 
     @livewireScripts
 

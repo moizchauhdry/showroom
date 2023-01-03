@@ -6,6 +6,13 @@
                 <h5 class="modal-title" id="invoice_modal_label"><b>Invoice - Car Selling & Buying</b></h5>
             </div>
             <div class="modal-body">
+                @if ($errors->any())
+                <div class="alert alert-danger text-center">
+                    <span class="text-center"><i class="bi bi-exclamation-octagon me-1"></i> Validation Error: The data
+                        you have entered is invalid or incomplete.</span>
+                </div>
+                @endif
+
                 <form>
                     <h5 class="text-center"><strong><u>Seller Information</u></strong></h5>
                     <div class="card p-3 mb-3">
@@ -241,3 +248,28 @@
         </div>
     </div>
 </div>
+
+@push('js')
+<script>
+    var s_phone = document.getElementById('s_phone');
+    var b_phone = document.getElementById('b_phone');
+    var s_cnic= document.getElementById('s_cnic');
+    var b_cnic= document.getElementById('b_cnic');
+    var w1_phone = document.getElementById('w1_phone');
+    var w2_phone = document.getElementById('w2_phone');
+
+    var phone_options = {
+        mask: '0000-0000000'
+    };
+    var cnic_options = {
+        mask: '00000-0000000-0'
+    };
+
+    var mask = IMask(s_phone, phone_options);
+    var mask = IMask(b_phone, phone_options);
+    var mask = IMask(w1_phone, phone_options);
+    var mask = IMask(w2_phone, phone_options);
+    var mask = IMask(s_cnic, cnic_options);
+    var mask = IMask(b_cnic, cnic_options);
+</script>
+@endpush
