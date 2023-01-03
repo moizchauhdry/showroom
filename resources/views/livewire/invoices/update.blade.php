@@ -1,3 +1,9 @@
+<style>
+    label {
+        font-weight: 900
+    }
+</style>
+
 <div wire:ignore.self class="modal fade" id="invoice_modal" tabindex="-1" role="dialog"
     aria-labelledby="invoice_modal_label" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-xl" role="document">

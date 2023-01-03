@@ -53,7 +53,7 @@
 
 
                         <a href="{{route('admin.invoices.print', $invoice->id)}}" target="_blank"
-                            class="btn btn-success btn-sm"><i class="bi bi-printer me-1"></i>Print</a>
+                            class="btn btn-success btn-sm"><i class="bi bi-printer me-1"></i>Invoice</a>
                     </td>
                 </tr>
                 @empty
