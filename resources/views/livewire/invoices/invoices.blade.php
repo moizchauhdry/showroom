@@ -50,6 +50,9 @@
                             class="btn btn-danger btn-sm my-1">
                             <i class="bi bi-trash me-1"></i>Delete</button>
                         @endcan
+
+
+                        <a href="{{route('admin.invoices.print', $invoice->id)}}" target="_blank">Print</a>
                     </td>
                 </tr>
                 @empty

@@ -38,4 +38,6 @@ Route::group(['middleware' => ['auth'], 'as' => 'admin.'], function () {
     Route::get('/invoices', function () {
         return view('admin.invoices');
     })->name('invoices')->middleware('permission:invoice-list');
+
+    Route::get('/invoices/print/{id}', [App\Http\Controllers\InvoiceController::class, 'print'])->name('invoices.print');
 });
