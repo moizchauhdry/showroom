@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container py-4">
         <div class="col-md-8 offset-md-2">
             <div class="card p-5">
                 <h5 class="text-center border p-2 mb-4 bg-light">Car Sale & Purchase - Invoice #{{$invoice->id}}</h5>
@@ -51,6 +51,12 @@
             <div>Designed & Developed By Moiz Chauhdry</div>
         </footer>
     </div>
+
+    <script>
+        window.onload = function() {
+            window.print();
+        }
+    </script>
 </body>
 
 </html>
