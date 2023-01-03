@@ -74,7 +74,7 @@ class Users extends Component
         $this->resetInputFields();
 
         $this->alert('User Created!', 'The user have been created successfully.');
-        $this->emit('userStore');
+        $this->emit('close_user_modal');
     }
 
     public function edit($id)
@@ -116,7 +116,7 @@ class Users extends Component
             $this->resetInputFields();
 
             $this->alert('User Updated!', 'The user have been updated successfully.');
-            $this->emit('userStore');
+            $this->emit('close_user_modal');
         }
     }
 

@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel Livewire') }}</title>
 
     <!-- Scripts -->
-    {{-- <script src="{{ asset('js/jquery.js') }}" defer></script> --}}
+    <script src="{{ asset('js/jquery.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{asset('plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 
@@ -125,14 +125,14 @@
     @livewireScripts
 
     <script type="text/javascript">
-        window.livewire.on('userStore', () => {
+        window.livewire.on('close_user_modal', () => {
             $('#user_modal').modal('hide');
         });
-        window.livewire.on('driverStore', () => {
-            $('#driver_modal').modal('hide');
-        });
-        window.livewire.on('role_modal_hide', () => {
+        window.livewire.on('close_role_modal', () => {
             $('#role_modal').modal('hide');
+        });
+        window.livewire.on('close_invoice_modal', () => {
+            $('#invoice_modal').modal('hide');
         });
     </script>
 
@@ -165,15 +165,6 @@
                 text: event.detail.text,
                 icon: event.detail.type,
             });
-        });
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.phone').inputmask('0399-9999999');
-            $('.cnic').inputmask('99999-9999999-9');
         });
     </script>
 </body>

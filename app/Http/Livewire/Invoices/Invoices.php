@@ -178,7 +178,7 @@ class Invoices extends Component
 
         $this->resetInputFields();
         $this->alert('Invoice Created!', 'The Invoice have been created successfully.');
-        $this->emit('invoicestore');
+        $this->emit('close_invoice_modal');
     }
 
     public function edit($id)
@@ -307,7 +307,7 @@ class Invoices extends Component
             $this->resetInputFields();
 
             $this->alert('Invoice Updated!', 'The Invoice have been updated successfully.');
-            $this->emit('invoicestore');
+            $this->emit('close_invoice_modal');
         }
     }
 

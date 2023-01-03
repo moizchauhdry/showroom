@@ -52,7 +52,7 @@ class Roles extends Component
 
         $this->alert('Role Added!', 'The role have been created successfully.');
         $this->resetInputFields();
-        $this->emit('role_modal_hide');
+        $this->emit('close_role_modal');
     }
 
     public function edit($id)
@@ -88,7 +88,7 @@ class Roles extends Component
             $this->updateMode = false;
             $this->alert('Role Updated!', 'The role have been updated successfully.');
             $this->resetInputFields();
-            $this->emit('role_modal_hide');
+            $this->emit('close_role_modal');
         }
     }
 
