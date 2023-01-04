@@ -67,7 +67,8 @@
         <tr>
             <td style="padding: 10px" width="50%">
                 <strong>Invoice Number</strong>: 0{{ $invoice->id}}<br>
-                <strong>Invoice Date</strong> : {{ $invoice->created_at }}<br>
+                <strong>Invoice Date</strong> : {{$invoice->created_at->format('F d, Y')}} |
+                {{$invoice->created_at->format('H:i A')}}<br>
             </td>
 
             <td style="padding: 10px" width="50%">

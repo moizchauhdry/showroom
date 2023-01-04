@@ -18,8 +18,8 @@ class AdminSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'name' => 'Orbit Limo Admin',
-            'email' => 'admin@orbitlimo.ca',
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
             'password' => Hash::make('12345678'),
         ]);
 

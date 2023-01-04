@@ -28,7 +28,11 @@
                 <tr>
                     <th>No.</th>
                     <th>Invoice #</th>
-                    <th>Registration No.</th>
+                    <th>Vehicle</th>
+                    <th>Seller</th>
+                    <th>Buyer</th>
+                    <th>Amount</th>
+                    <th>Date</th>
                     <th></th>
                 </tr>
             </thead>
@@ -37,7 +41,14 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $invoice->id }}</td>
-                    <td>{{ $invoice->reg_no }}</td>
+                    <td>
+                        <strong>Reg No : </strong>{{ $invoice->reg_no}}<br>
+                        <strong>Model : </strong>{{$invoice->model}}<br>
+                    </td>
+                    <td>{{ $invoice->s_name}}</td>
+                    <td>{{ $invoice->b_name}}</td>
+                    <td>{{$invoice->amount}}</td>
+                    <td>{{$invoice->created_at->format('F d, Y')}} | {{$invoice->created_at->format('H:i A')}}</td>
                     <td>
                         @can('invoice-edit')
                         <button wire:click="edit({{ $invoice->id }})" class="btn btn-primary btn-sm my-1"
@@ -50,8 +61,6 @@
                             class="btn btn-danger btn-sm my-1">
                             <i class="bi bi-trash me-1"></i>Delete</button>
                         @endcan
-
-
                         <a href="{{route('admin.invoices.print', $invoice->id)}}" target="_blank"
                             class="btn btn-success btn-sm"><i class="bi bi-printer me-1"></i>Invoice</a>
                     </td>

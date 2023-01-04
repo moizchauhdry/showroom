@@ -121,6 +121,11 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer style="text-align: center;font-size:10px">
+            <span>Copyright © 2023-2024. All Rights Reserved.</span> <br>
+            <span>Designed & Developed By Moiz Chauhdry</span>
+        </footer>
     </div>
 
     @stack('js')
