@@ -12,14 +12,14 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::find($id);
 
-        // view()->share([
-        //     'invoice' => $invoice,
-        // ]);
+        view()->share([
+            'invoice' => $invoice,
+        ]);
 
-        // $pdf = PDF::loadView('prints.invoice2');
-        // $pdf->setPaper('A4', 'portrait');
-        // return $pdf->stream('INVOICE-' . $invoice->id . '.pdf', array("Attachment" => false));
+        $pdf = PDF::loadView('prints.invoice');
+        $pdf->setPaper('A4', 'portrait');
+        return $pdf->stream('INVOICE-' . $invoice->id . '.pdf', array("Attachment" => false));
 
-        return view('prints.invoice2', compact('invoice'));
+        return view('prints.invoice', compact('invoice'));
     }
 }

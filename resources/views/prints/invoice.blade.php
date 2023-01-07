@@ -7,150 +7,361 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vehicle Sale Invoice - 0{{$invoice->id}} </title>
     <style>
-        h5,
-        table,
-        th,
-        td {
+        body {
             font-family: 'Archivo Narrow', sans-serif;
+            font-size: 10px
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
         }
 
         table {
-            width: 100%;
             border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
         }
 
-        th,
-        td {
-            text-align: left;
-            vertical-align: top;
-            border: 1px solid #8a8a8a;
-            /* padding: 0.3em; */
-            caption-side: bottom;
-            font-size: 12px;
-            text-wrap: inherit;
+        .border-bottom {
+            border-bottom: 1px solid black;
+            width: 100%
         }
 
-        th {
-            font-weight: bolder;
-            text-align: center;
+        .border-none {
+            border-bottom: 5px solid white;
         }
 
-        /* caption {
-            padding: 0.3em;
-        } */
+        .dynamic {
+            padding-left: 10px;
+            font-size: 14px
+        }
 
-        .heading {
-            text-transform: uppercase;
-            background-color: #8a8a8a;
-            padding: 5px;
-            color: whitesmoke;
+        .border {
+            border: 1px solid black;
         }
     </style>
 </head>
 
 <body>
-    <table style="border:none;">
-        <tr>
-            <td style="width:50%" style="border:none;font-size:7px;text-align:left;">
-                <p>Vehicle Sale Invoice</p>
-            </td>
-            <td style="width:50%" style="border:none;font-size:7px;text-align:right;">
-                <div>{{ $invoice->created_at }}</div>
-                <div>151 G Block Sabzazar</div>
-                <div>Multan Road Lahore</div>
-                <div>Punjab,Pakistan</div>
-            </td>
-        </tr>
-    </table>
-    <h5 style="text-align:center; text-transform:uppercase"> Vehicle Sale Invoice </h5>
-    <table style="margin-bottom: 30px;">
-        <tr>
-            <td style="padding: 10px" width="50%">
-                <strong>Invoice Number</strong>: 0{{ $invoice->id}}<br>
-                <strong>Invoice Date</strong> : {{$invoice->created_at->format('F d, Y')}} |
-                {{$invoice->created_at->format('H:i A')}}<br>
-            </td>
+    <div class="row">
+        <div style="float: left">
+            {{-- <h4>Logo</h4> --}}
+            <img src="https://cdn.pixabay.com/photo/2016/04/01/09/11/car-1299198__340.png" alt="" style="width:100px">
+        </div>
+        <div style="float: right">
+            <table style="font-size:8px">
+                <tr>
+                    <td class="border" style="padding:5px">DATE</td>
+                    <td class="border" style="padding-left:5px; padding-right:15px">{{$invoice->created_at->format('F d,
+                        Y')}}</td>
+                </tr>
+                <tr>
+                    <td class="border" style="padding:5px">DAY</td>
+                    <td class="border" style="padding-left:5px; padding-right:15px">
+                        {{$invoice->created_at->format('l')}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-            <td style="padding: 10px" width="50%">
-            </td>
-        </tr>
-        <tr>
-            <td style="padding: 10px" width="50%">
-                <strong class="heading">Seller Information</strong><br><br>
-                <strong>Name : </strong>{{ $invoice->s_name}}<br>
-                <strong>Father : </strong>{{$invoice->s_father}}<br>
-                <strong>CNIC : </strong>{{ $invoice->s_cnic}}<br>
-                <strong>Phone : </strong>{{ $invoice->s_phone}}<br>
-                <strong>Address : </strong>{{$invoice->s_address}}
-            </td>
-            <td style="padding: 10px" width="50%">
-                <strong class="heading">Buyer Information</strong><br><br>
-                <strong>Name : </strong>{{ $invoice->b_name}}<br>
-                <strong>Father : </strong>{{$invoice->b_father}}<br>
-                <strong>CNIC : </strong>{{ $invoice->b_cnic}}<br>
-                <strong>Phone : </strong>{{ $invoice->b_phone}}<br>
-                <strong>Address : </strong>{{$invoice->b_address}}
-            </td>
-        </tr>
-        <tr>
-            <td style="padding: 10px" colspan="2">
-                <strong class="heading">Vehicle Information</strong><br><br>
-                <strong>Registration No : </strong>{{ $invoice->reg_no}}<br>
-                <strong>Chassis No : </strong> {{$invoice->chassis_no}}<br>
-                <strong>Engine No : </strong> {{$invoice->engine_no}}<br>
-                <strong>Mark : </strong>{{ $invoice->mark}}<br>
-                <strong>Horsepower : </strong>{{ $invoice->hp}}<br>
-                <strong>Model : </strong>{{$invoice->model}}<br>
-                <strong>Kota : </strong>{{$invoice->kota}}<br>
-                <strong>Post Office : </strong>{{$invoice->post_office}}<br>
-                <strong>Original Registration Book : </strong>{{$invoice->reg_book}}<br>
-                <strong>Original File : </strong>{{$invoice->reg_file}}<br>
-                <strong>Total File Pages : </strong>{{$invoice->file_pg}}<br>
-                <strong>Computerized Number Plate : </strong>{{$invoice->no_plate}}<br>
-                <strong>Car Color : </strong>{{$invoice->car_color}}<br>
-                <strong>Amount (Digits) : </strong>{{$invoice->amount}}<br>
-                <strong>Amount (Words) : </strong>{{$invoice->amount_words}}<br>
-            </td>
-        </tr>
-        <tr>
-            <td style="padding: 10px" width="50%">
-                <strong class="heading">Seller Witness</strong><br><br>
-                <strong>Name</strong> : {{ $invoice->w1_name}}<br>
-                <strong>Father:</strong> {{$invoice->w1_father}}<br>
-                <strong>Phone</strong> : {{ $invoice->w1_phone}}<br>
-                <strong>Address</strong> : {{$invoice->w1_address}}
-            </td>
-            <td style="padding: 10px" width="50%">
-                <strong class="heading">Buyer Witness</strong><br><br>
-                <strong>Name</strong> : {{ $invoice->w2_name}}<br>
-                <strong>Father:</strong> {{$invoice->w2_father}}<br>
-                <strong>Phone</strong> : {{ $invoice->w2_phone}}<br>
-                <strong>Address</strong> : {{$invoice->w2_address}}
-            </td>
-        </tr>
-        <tr>
-            <td style="padding: 10px; text-align:center">
-                <strong>Amount</strong>
-            </td>
-            <td style="padding: 10px; text-align:center">
-                <strong style="font-size: 16px">{{number_format($invoice->amount)}} Rs </strong> <br>
-                <strong>({{$invoice->amount_words}})</strong>
-            </td>
-        </tr>
-        <tr>
-            <td style="padding: 10px;padding-bottom:30px">
-                <strong>Seller Signature</strong> : <br>
-            </td>
-            <td style="padding: 10px;padding-bottom:30px">
-                <strong>Buyer Signature</strong> : <br>
-            </td>
-        </tr>
-    </table>
+    <div style="text-align:center">
+        <span>Lahore Walton Motors</span> <br>
+        <span>21-B Walton, Near Packages Mall, Lahore</span>
+        <h2 style="text-transform: uppercase;">SALE RECIEPT</h2>
+    </div>
 
-    <footer style="text-align: center;font-size:10px">
-        <span>Copyright © 2023-2024. All Rights Reserved.</span> <br>
-        <span>Designed & Developed By Moiz Chauhdry</span>
-    </footer>
+    <div>
+        <table>
+            <tr>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">I am:</span>
+                        <span class="dynamic">{{$invoice->s_name}}</span>
+                    </div>
+                </td>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Father:</span>
+                        <span class="dynamic">{{$invoice->s_father}}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Phone:</span>
+                        <span class="dynamic">{{$invoice->s_phone}}</span>
+                    </div>
+                </td>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">CNIC:</span>
+                        <span class="dynamic">{{$invoice->s_cnic}}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px" colspan="2">
+                    <div class="border-bottom">
+                        <span class="border-none">Permanent Address:</span>
+                        <span class="dynamic">{{$invoice->s_address}}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Car Registration #:</span>
+                        <span class="dynamic">{{$invoice->reg_no}}</span>
+                    </div>
+                </td>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Chassis #:</span>
+                        <span class="dynamic">{{$invoice->chassis_no}}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Engine #:</span>
+                        <span class="dynamic">{{$invoice->engine_no}}</span>
+                    </div>
+                </td>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Car Color:</span>
+                        <span class="dynamic">{{$invoice->car_color}}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Mark:</span>
+                        <span class="dynamic">{{$invoice->mark}}</span>
+                    </div>
+                </td>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Power:</span>
+                        <span class="dynamic">{{$invoice->hp}}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Model:</span>
+                        <span class="dynamic">{{$invoice->model}}</span>
+                    </div>
+                </td>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Quota:</span>
+                        <span class="dynamic">{{$invoice->kota}}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Post Office:</span>
+                        <span class="dynamic">{{$invoice->post_office}}</span>
+                    </div>
+                </td>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Number Plate:</span>
+                        <span class="dynamic">{{$invoice->no_plate}}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px" colspan="2">
+                    <div class="border-bottom">
+                        <span class="border-none">SPECIAL NOTE:</span>
+                        <span class="dynamic">ALL DOCUMENTS GIVEN EXCISE TOKEN COMPLETE - 2023</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">To Mr:</span>
+                        <span class="dynamic">{{$invoice->b_name}}</span>
+                    </div>
+                </td>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Father Name:</span>
+                        <span class="dynamic">{{$invoice->b_father}}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Phone:</span>
+                        <span class="dynamic">{{$invoice->b_phone}}</span>
+                    </div>
+                </td>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">CNIC:</span>
+                        <span class="dynamic">{{$invoice->b_cnic}}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px" colspan="2">
+                    <div class="border-bottom">
+                        <span class="border-none">Permanent Address:</span>
+                        <span class="dynamic">{{$invoice->b_address}}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Advance(Cheque/Cash):</span>
+                        <span class="dynamic">NIL</span>
+                    </div>
+                </td>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Amount:</span>
+                        <span class="dynamic">Rs {{$invoice->amount}}/-</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px">
+                    <div class="border-bottom">
+                        <span class="border-none">Remaining Amount:</span>
+                        <span class="dynamic">NIL</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px" colspan="2">
+                    Has received and hand over the vehicle along with all original documents with the buyer, I (seller)
+                    will be responsible,
+                    if vehicle will be used in any legal activities and offense like theft, shortage of installment’s
+                    etc. Instead of
+                    showroom. Therefore, the has been written in the presence of the witness to verify at the time of
+                    need. Buyer must
+                    transfer car registration to their number in 15 days. Otherwise show room will not responsible
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px" colspan="2"><strong>BUYER AGREEMENT:</strong></td>
+            </tr>
+            <tr>
+                <td style="padding:5px" colspan="2">
+                    I am buying this car with consolation and I have received original registration book, original file,
+                    and biometric.
+                    Seller will be responsible if any discrepancy/fault/fraud will be found in the document instead of
+                    the showroom. I shall
+                    be responsible from today.
+                </td>
+            </tr>
+        </table>
+
+        <div style="padding:10px">
+            <div class="row">
+                <div class="column">
+                    <h4>SELLER:</h4>
+                    <table>
+                        <tr>
+                            <td class="border" style="padding:5px">SIGNATURE:</td>
+                            <td class="border" style="padding-left:150px;padding-bottom:40px"></td>
+                        </tr>
+                        <tr>
+                            <td class="border" style="padding:5px">THUMB:</td>
+                            <td class="border" style="padding-left:150px;padding-bottom:65px"></td>
+                        </tr>
+                        <tr>
+                            <td class="border" style="padding:5px">CONTACT:</td>
+                            <td class="border" style="padding-left:5px;padding-bottom:5px">{{$invoice->s_phone}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="column">
+                    <h4>BUYER:</h4>
+                    <table>
+                        <tr>
+                            <td class="border" style="padding:5px">SIGNATURE:</td>
+                            <td class="border" style="padding-left:150px;padding-bottom:40px"></td>
+                        </tr>
+                        <tr>
+                            <td class="border" style="padding:5px">THUMB:</td>
+                            <td class="border" style="padding-left:150px;padding-bottom:65px"></td>
+                        </tr>
+                        <tr>
+                            <td class="border" style="padding:5px">CONTACT:</td>
+                            <td class="border" style="padding-left:5px;padding-bottom:5px">{{$invoice->b_phone}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="column">
+                    <h4>SELLER WITNESS:</h4>
+                    <table>
+                        <tr>
+                            <td class="border" style="padding:6px">NAME:</td>
+                            <td class="border" style="padding:6px">{{$invoice->w1_name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="border" style="padding:6px">ADDRESS:</td>
+                            <td class="border" style="padding:6px">{{$invoice->w1_address}}</td>
+                        </tr>
+                        <tr>
+                            <td class="border" style="padding:6px">CONTACT:</td>
+                            <td class="border" style="padding:6px">{{$invoice->w1_phone}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="column">
+                    <h4>BUYER WITNESS:</h4>
+                    <table>
+                        <tr>
+                            <td class="border" style="padding:6px">NAME:</td>
+                            <td class="border" style="padding:6px">{{$invoice->w2_name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="border" style="padding:6px">ADDRESS:</td>
+                            <td class="border" style="padding:6px">{{$invoice->w2_address}}</td>
+                        </tr>
+                        <tr>
+                            <td class="border" style="padding:6px">CONTACT:</td>
+                            <td class="border" style="padding:6px">{{$invoice->w2_phone}}</td>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
