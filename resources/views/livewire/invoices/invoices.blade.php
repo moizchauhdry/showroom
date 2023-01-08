@@ -67,7 +67,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="6" class="text-center">There are no invoices found yet.</td>
+                    <td colspan="8" class="text-center">There are no invoices found yet.</td>
                 </tr>
                 @endforelse
             </tbody>

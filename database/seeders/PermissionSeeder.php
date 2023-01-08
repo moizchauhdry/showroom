@@ -15,6 +15,7 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permissions = [
+            'dashboard',
             'role-list',
             'role-create',
             'role-edit',

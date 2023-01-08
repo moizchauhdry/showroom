@@ -35,8 +35,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{-- {{ config('app.name', 'Laravel Livewire') }} --}}
-                    Showroom
+                    {{ config('app.name', 'Laravel Livewire') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -67,10 +66,12 @@
                         @endif --}}
                         @else
 
+                        @can('dashboard')
                         <li class="nav-item">
                             <a class="nav-link {{(Route::currentRouteName() == 'home') ? 'active' : ''}}"
-                                href="{{ route('home') }}">{{ __('Dashboard')}}</a>
+                                href="{{ route('home') }}">{{__('Dashboard')}}</a>
                         </li>
+                        @endcan
 
                         @can('user-list')
                         <li class="nav-item">

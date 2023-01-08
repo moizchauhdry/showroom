@@ -40,7 +40,7 @@ class CreateInvoicesTable extends Migration
             $table->string('file_pg', 100);
             $table->string('no_plate', 100);
             $table->string('car_color', 100);
-            $table->float('amount');
+            $table->double('amount');
             $table->string('amount_words', 100);
 
             $table->string('w1_name', 100)->nullable();
