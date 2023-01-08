@@ -57,7 +57,7 @@ class Invoices extends Component
 
     public function render()
     {
-        $invoices = Invoice::where('reg_no', 'like', '%' . $this->search . '%')->paginate(10);
+        $invoices = Invoice::where('reg_no', 'LIKE', '%' . $this->search . '%')->paginate(10);
 
         return view('livewire.invoices.invoices', [
             'invoices' => $invoices,

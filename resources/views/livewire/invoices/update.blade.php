@@ -239,6 +239,13 @@
                         </div>
                     </div>
                 </form>
+
+                @if ($errors->any())
+                <div class="alert alert-danger text-center">
+                    <span class="text-center"><i class="bi bi-exclamation-octagon me-1"></i> Validation Error: The data
+                        you have entered is invalid or incomplete.</span>
+                </div>
+                @endif
             </div>
             <div class="modal-footer">
                 <button type="button" wire:click.prevent="cancel()" class="btn btn-danger"
