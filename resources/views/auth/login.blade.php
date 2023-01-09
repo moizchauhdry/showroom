@@ -6,7 +6,10 @@
     <div class="row justify-content-center">
         <div class="col-md-6 mt-3">
             <div class="card">
-                <div class="card-header text-center fs-5 py-3">
+                <div class="card-header text-center">
+                    <div>
+                        <img src="{{asset('images/logo.png')}}" alt="" style="width:150px">
+                    </div>
                     {{__('Dashboard Login') }}
                 </div>
                 <div class="card-body">

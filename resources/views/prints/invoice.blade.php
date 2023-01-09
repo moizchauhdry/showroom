@@ -63,8 +63,7 @@
 <body>
     <div class="row">
         <div style="float: left">
-            {{-- <h4>Logo</h4> --}}
-            <img src="https://cdn.pixabay.com/photo/2016/04/01/09/11/car-1299198__340.png" alt="" style="width:100px">
+            <img src="{{asset('images/logo.png')}}" alt="" style="width:100px">
         </div>
         <div style="float: right">
             <table style="font-size:8px">
@@ -83,8 +82,8 @@
     </div>
 
     <div style="text-align:center">
-        <span>Lahore Walton Motors</span> <br>
-        <span>21-B Walton, Near Packages Mall, Lahore</span>
+        <span>PAK MOTORS</span> <br>
+        <span>11-H1 Main Sabzazar Lahore. Ph: 042-32186645</span>
         <h2 style="text-transform: uppercase;">SALE RECIEPT</h2>
     </div>
 
