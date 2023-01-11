@@ -2,6 +2,10 @@
     label {
         font-weight: 900
     }
+
+    .card {
+        border: 1px solid black !important;
+    }
 </style>
 
 <div wire:ignore.self class="modal fade" id="invoice_modal" tabindex="-1" role="dialog"
@@ -20,8 +24,8 @@
                 @endif
 
                 <form>
-                    <h5 class="text-center"><strong><u>Seller Information</u></strong></h5>
-                    <div class="card p-3 mb-3">
+                    <h6 class="text-center"><strong><u>Seller Information</u></strong></h6>
+                    <div class="card p-3 mb-4">
                         <div class="row">
                             <div class="col-md-3 form-group mb-2">
                                 <label for="s_name">Name</label>
@@ -55,8 +59,8 @@
                         </div>
                     </div>
 
-                    <h5 class="text-center"><strong><u>Buyer Information</u></strong></h5>
-                    <div class="card p-3 mb-3">
+                    <h6 class="text-center"><strong><u>Buyer Information</u></strong></h6>
+                    <div class="card p-3 mb-4">
                         <div class="row">
                             <div class="col-md-3 form-group mb-2">
                                 <label for="b_name">Name</label>
@@ -89,8 +93,8 @@
                         </div>
                     </div>
 
-                    <h5 class="text-center"><strong><u>Car Information</u></strong></h5>
-                    <div class="card p-3 mb-3">
+                    <h6 class="text-center"><strong><u>Vehicle Information</u></strong></h6>
+                    <div class="card p-3 mb-4">
                         <div class="row">
                             <div class="col-md-3 form-group mb-2">
                                 <label for="reg_no">Registration No.</label>
@@ -179,8 +183,8 @@
                         </div>
                     </div>
 
-                    <h5 class="text-center"><strong><u>Seller Witness</u></strong></h5>
-                    <div class="card p-3 mb-3">
+                    <h6 class="text-center"><strong><u>Seller Witness</u></strong></h6>
+                    <div class="card p-3 mb-4">
                         <div class="row">
                             <div class="col-md-3 form-group mb-2">
                                 <label for="w1_name">Name</label>
@@ -209,8 +213,8 @@
                         </div>
                     </div>
 
-                    <h5 class="text-center"><strong><u>Buyer Witness</u></strong></h5>
-                    <div class="card p-3 mb-3">
+                    <h6 class="text-center"><strong><u>Buyer Witness</u></strong></h6>
+                    <div class="card p-3 mb-4">
                         <div class="row">
                             <div class="col-md-3 form-group mb-2">
                                 <label for="w2_name">Name</label>
@@ -235,6 +239,23 @@
                                 <input type="text" class="form-control form-control-sm" wire:model="w2_address"
                                     id="w2_address">
                                 @error('w2_address') <span class="text-danger">{{ $message }}</span>@enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card p-3 mb-4">
+                        <div class="row">
+                            <div class="col-md-3 form-group mb-2">
+                                <label for="s_commission">Buyer Commission</label>
+                                <input type="text" class="form-control form-control-sm" wire:model="s_commission"
+                                    id="s_commission">
+                                @error('s_commission') <span class="text-danger">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="col-md-3 form-group mb-2">
+                                <label for="b_commission">Seller Commission</label>
+                                <input type="text" class="form-control form-control-sm" wire:model="b_commission"
+                                    id="b_commission">
+                                @error('b_commission') <span class="text-danger">{{ $message }}</span>@enderror
                             </div>
                         </div>
                     </div>

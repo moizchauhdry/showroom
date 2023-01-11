@@ -142,3 +142,15 @@
 .modal-backdrop {
     background-color: #0000005c !important;
 }
+
+
+.btn-sm,
+.btn-group-sm>.btn {
+    --bs-btn-font-size: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .hidden {
+        display: none;
+    }
+}

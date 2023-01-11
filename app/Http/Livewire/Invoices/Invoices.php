@@ -50,7 +50,9 @@ class Invoices extends Component
         $w2_name,
         $w2_father,
         $w2_phone,
-        $w2_address;
+        $w2_address,
+        $s_commission,
+        $b_commission;
 
     protected $listeners = [
         'delete-invoice' => 'delete',
@@ -58,7 +60,7 @@ class Invoices extends Component
 
     public function render()
     {
-        $invoices = Invoice::where('reg_no', 'LIKE', '%' . $this->search . '%')->paginate(10);
+        $invoices = Invoice::orderBy('id', 'desc')->where('reg_no', 'LIKE', '%' . $this->search . '%')->paginate(10);
 
         return view('livewire.invoices.invoices', [
             'invoices' => $invoices,
@@ -139,6 +141,11 @@ class Invoices extends Component
             'w2_father' => ['nullable', 'string', 'max:255'],
             'w2_phone' => ['nullable', 'string', 'max:255'],
             'w2_address' => ['nullable', 'string', 'max:255'],
+            's_commission' => ['required', 'numeric'],
+            'b_commission' => ['required', 'numeric'],
+        ], [
+            'required' => 'This field is required.',
+            'numeric' => 'The data must be a number.',
         ]);
 
         $invoice = Invoice::create([
@@ -175,6 +182,8 @@ class Invoices extends Component
             'w2_father' => $data['w2_father'],
             'w2_phone' => $data['w2_phone'],
             'w2_address' => $data['w2_address'],
+            's_commission' => $data['s_commission'],
+            'b_commission' => $data['b_commission'],
             'created_by' => Auth::user()->id,
             'updated_by' => Auth::user()->id,
         ]);
@@ -266,6 +275,11 @@ class Invoices extends Component
             'w2_father' => ['nullable', 'string', 'max:255'],
             'w2_phone' => ['nullable', 'string', 'max:255'],
             'w2_address' => ['nullable', 'string', 'max:255'],
+            's_commission' => ['required', 'numeric'],
+            'b_commission' => ['required', 'numeric'],
+        ], [
+            'required' => 'This field is required.',
+            'numeric' => 'The data must be a number.',
         ]);
 
         if ($this->invoice_id) {
@@ -304,8 +318,9 @@ class Invoices extends Component
                 'w2_father' => $this->w2_father,
                 'w2_phone' => $this->w2_phone,
                 'w2_address' => $this->w2_address,
+                's_commission' => $this->s_commission,
+                'b_commission' => $this->b_commission,
                 'updated_by' => Auth::user()->id,
-
             ]);
 
             $this->updateMode = false;

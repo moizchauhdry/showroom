@@ -24,15 +24,16 @@
 
     <div class="table-responsive">
         <table class="table table-bordered text-center">
+
             <thead class="bg-success text-white">
                 <tr>
                     <th>No.</th>
-                    <th>Invoice #</th>
-                    <th>Vehicle</th>
-                    <th>Seller</th>
-                    <th>Buyer</th>
-                    <th>Amount</th>
-                    <th>Date</th>
+                    <th class="hidden">Invoice #</th>
+                    <th>Reg #</th>
+                    <th class="hidden">Seller</th>
+                    <th class="hidden">Buyer</th>
+                    <th class="hidden">Amount</th>
+                    <th class="hidden">Date</th>
                     <th></th>
                 </tr>
             </thead>
@@ -40,29 +41,34 @@
                 @forelse($invoices as $invoice)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $invoice->id }}</td>
+                    <td class="hidden">00{{ $invoice->id }}</td>
+                    <td>{{ $invoice->reg_no}}</td>
+                    <td class="hidden">{{ $invoice->s_name}}</td>
+                    <td class="hidden">{{ $invoice->b_name}}</td>
+                    <td class="hidden">{{$invoice->amount}}</td>
+                    <td class="hidden">
+                        {{$invoice->created_at->format('F d, Y')}} | {{$invoice->created_at->format('h:i A')}}</td>
                     <td>
-                        <strong>Reg No : </strong>{{ $invoice->reg_no}}<br>
-                        <strong>Model : </strong>{{$invoice->model}}<br>
-                    </td>
-                    <td>{{ $invoice->s_name}}</td>
-                    <td>{{ $invoice->b_name}}</td>
-                    <td>{{$invoice->amount}}</td>
-                    <td>{{$invoice->created_at->format('F d, Y')}} | {{$invoice->created_at->format('h:i A')}}</td>
-                    <td>
+
+                        <button wire:click="edit({{ $invoice->id }})" class="btn btn-primary btn-sm"
+                            data-bs-toggle="modal" data-bs-target="#invoice_detail_modal">
+                            <i class="bi bi-list me-1"></i>Detail</button>
+
+                        <a href="{{route('admin.invoices.print', $invoice->id)}}" target="_blank"
+                            class="btn btn-success btn-sm"><i class="bi bi-printer me-1"></i>Invoice</a>
+
                         @can('invoice-edit')
-                        <button wire:click="edit({{ $invoice->id }})" class="btn btn-primary btn-sm my-1"
+                        <button wire:click="edit({{ $invoice->id }})" class="btn btn-warning btn-sm"
                             data-bs-toggle="modal" data-bs-target="#invoice_modal">
                             <i class="bi bi-pencil-square me-1"></i>Edit</button>
                         @endcan
 
                         @can('invoice-delete')
                         <button onclick="deleteConfirmation('delete-invoice','{{$invoice->id}}')"
-                            class="btn btn-danger btn-sm my-1">
+                            class="btn btn-danger btn-sm">
                             <i class="bi bi-trash me-1"></i>Delete</button>
                         @endcan
-                        <a href="{{route('admin.invoices.print', $invoice->id)}}" target="_blank"
-                            class="btn btn-success btn-sm"><i class="bi bi-printer me-1"></i>Invoice</a>
+
                     </td>
                 </tr>
                 @empty
@@ -90,6 +96,8 @@
     @can('invoice-edit')
     @include('livewire.invoices.update')
     @endcan
+
+    @include('livewire.invoices.detail')
 
     @include('livewire.loader')
 
