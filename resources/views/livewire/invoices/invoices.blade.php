@@ -48,7 +48,7 @@
                     <td>{{ $invoice->s_name}}</td>
                     <td>{{ $invoice->b_name}}</td>
                     <td>{{$invoice->amount}}</td>
-                    <td>{{$invoice->created_at->format('F d, Y')}} | {{$invoice->created_at->format('H:i A')}}</td>
+                    <td>{{$invoice->created_at->format('F d, Y')}} | {{$invoice->created_at->format('h:i A')}}</td>
                     <td>
                         @can('invoice-edit')
                         <button wire:click="edit({{ $invoice->id }})" class="btn btn-primary btn-sm my-1"

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Invoices;
 
 use Livewire\Component;
 use App\Models\Invoice;
+use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
 
 class Invoices extends Component
@@ -140,7 +141,7 @@ class Invoices extends Component
             'w2_address' => ['nullable', 'string', 'max:255'],
         ]);
 
-        Invoice::create([
+        $invoice = Invoice::create([
             's_name' => $data['s_name'],
             's_father' => $data['s_father'],
             's_cnic' => $data['s_cnic'],
@@ -174,6 +175,8 @@ class Invoices extends Component
             'w2_father' => $data['w2_father'],
             'w2_phone' => $data['w2_phone'],
             'w2_address' => $data['w2_address'],
+            'created_by' => Auth::user()->id,
+            'updated_by' => Auth::user()->id,
         ]);
 
         $this->resetInputFields();
@@ -301,6 +304,8 @@ class Invoices extends Component
                 'w2_father' => $this->w2_father,
                 'w2_phone' => $this->w2_phone,
                 'w2_address' => $this->w2_address,
+                'updated_by' => Auth::user()->id,
+
             ]);
 
             $this->updateMode = false;

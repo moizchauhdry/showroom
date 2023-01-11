@@ -68,23 +68,28 @@
         <div style="float: right">
             <table style="font-size:8px">
                 <tr>
-                    <td class="border" style="padding:5px">DATE</td>
+                    <td class="border" style="padding:2px">DATE</td>
                     <td class="border" style="padding-left:5px; padding-right:15px">{{$invoice->created_at->format('F d,
                         Y')}}</td>
                 </tr>
                 <tr>
-                    <td class="border" style="padding:5px">DAY</td>
+                    <td class="border" style="padding:2px">TIME</td>
                     <td class="border" style="padding-left:5px; padding-right:15px">
-                        {{$invoice->created_at->format('l')}}</td>
+                        {{$invoice->created_at->format('h:i A - l')}}</td>
+                </tr>
+                <tr>
+                    <td class="border" style="padding:2px">INVOICE BY</td>
+                    <td class="border" style="padding-left:5px; padding-right:15px">
+                        {{$invoice->createdbyUser->name ?? NULL}}</td>
                 </tr>
             </table>
         </div>
     </div>
 
     <div style="text-align:center">
-        <span>PAK MOTORS</span> <br>
-        <span>11-H1 Main Sabzazar Lahore. Ph: 042-32186645</span>
-        <h2 style="text-transform: uppercase;">SALE RECIEPT</h2>
+        <span style="font-size: 15px"><strong>PAK MOTORS</strong></span> <br>
+        <span style="font-size:12px">11-H1 Main Sabzazar Lahore. Ph: 042-32186645</span>
+        <h3 style="text-transform: uppercase;padding-top:10px">SALE RECIEPT</h2>
     </div>
 
     <div>
@@ -333,6 +338,10 @@
                             <td class="border" style="padding:6px">{{$invoice->w1_name}}</td>
                         </tr>
                         <tr>
+                            <td class="border" style="padding:6px">FATHER:</td>
+                            <td class="border" style="padding:6px">{{$invoice->w1_father}}</td>
+                        </tr>
+                        <tr>
                             <td class="border" style="padding:6px">ADDRESS:</td>
                             <td class="border" style="padding:6px">{{$invoice->w1_address}}</td>
                         </tr>
@@ -348,6 +357,10 @@
                         <tr>
                             <td class="border" style="padding:6px">NAME:</td>
                             <td class="border" style="padding:6px">{{$invoice->w2_name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="border" style="padding:6px">FATHER:</td>
+                            <td class="border" style="padding:6px">{{$invoice->w2_father}}</td>
                         </tr>
                         <tr>
                             <td class="border" style="padding:6px">ADDRESS:</td>
