@@ -171,13 +171,14 @@
                             </div>
                             <div class="col-md-3 form-group mb-2">
                                 <label for="amount">Amount <small>(Digits)</small></label>
-                                <input type="text" class="form-control form-control-sm" wire:model="amount" id="amount">
+                                <input wire:keyup="amountInWords" type="number" class="form-control form-control-sm"
+                                    wire:model="amount" id="amount">
                                 @error('amount') <span class="text-danger">{{ $message }}</span>@enderror
                             </div>
-                            <div class="col-md-3 form-group mb-2">
+                            <div class="col-md-6 form-group mb-2">
                                 <label for="amount_words">Amount <small>(Words)</small></label>
                                 <input type="text" class="form-control form-control-sm" wire:model="amount_words"
-                                    id="amount_words">
+                                    id="amount_words" readonly>
                                 @error('amount_words') <span class="text-danger">{{ $message }}</span>@enderror
                             </div>
                         </div>

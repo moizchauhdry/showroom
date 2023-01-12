@@ -358,4 +358,9 @@ class Invoices extends Component
             'text' =>  $text
         ]);
     }
+
+    public function amountInWords()
+    {
+        $this->amount_words = convertNumbersToWords($this->amount);
+    }
 }
