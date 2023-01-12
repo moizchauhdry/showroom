@@ -52,21 +52,22 @@
 
                         <button wire:click="edit({{ $invoice->id }})" class="btn btn-primary btn-sm"
                             data-bs-toggle="modal" data-bs-target="#invoice_detail_modal">
-                            <i class="bi bi-list me-1"></i>Detail</button>
+                            <i class="bi bi-list"></i><span class="hidden ms-1">Detail</span></button>
 
                         <a href="{{route('admin.invoices.print', $invoice->id)}}" target="_blank"
-                            class="btn btn-success btn-sm"><i class="bi bi-printer me-1"></i>Invoice</a>
+                            class="btn btn-success btn-sm"><i class="bi bi-printer"></i><span
+                                class="hidden ms-1">Invoice</span></a>
 
                         @can('invoice-edit')
                         <button wire:click="edit({{ $invoice->id }})" class="btn btn-warning btn-sm"
                             data-bs-toggle="modal" data-bs-target="#invoice_modal">
-                            <i class="bi bi-pencil-square me-1"></i>Edit</button>
+                            <i class="bi bi-pencil-square"></i><span class="hidden ms-1">Edit</span></button>
                         @endcan
 
                         @can('invoice-delete')
                         <button onclick="deleteConfirmation('delete-invoice','{{$invoice->id}}')"
                             class="btn btn-danger btn-sm">
-                            <i class="bi bi-trash me-1"></i>Delete</button>
+                            <i class="bi bi-trash"></i><span class="hidden ms-1">Delete</span></button>
                         @endcan
 
                     </td>
