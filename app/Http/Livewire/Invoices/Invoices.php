@@ -231,6 +231,8 @@ class Invoices extends Component
         $this->w2_father = $invoice->w2_father;
         $this->w2_phone = $invoice->w2_phone;
         $this->w2_address = $invoice->w2_address;
+        $this->s_commission = $invoice->s_commission;
+        $this->b_commission = $invoice->b_commission;
     }
 
     public function cancel()
