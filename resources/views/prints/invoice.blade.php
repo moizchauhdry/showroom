@@ -334,20 +334,20 @@
                     <h4>SELLER WITNESS:</h4>
                     <table>
                         <tr>
-                            <td class="border" style="padding:6px">NAME:</td>
-                            <td class="border" style="padding:6px">{{$invoice->w1_name}}</td>
+                            <td class="border" style="padding:6px;width:30%">NAME:</td>
+                            <td class="border" style="padding:6px;width:70%">{{$invoice->w1_name}}</td>
                         </tr>
                         <tr>
-                            <td class="border" style="padding:6px">FATHER:</td>
-                            <td class="border" style="padding:6px">{{$invoice->w1_father}}</td>
+                            <td class="border" style="padding:6px;width:30%">FATHER:</td>
+                            <td class="border" style="padding:6px;width:70%">{{$invoice->w1_father}}</td>
                         </tr>
                         <tr>
-                            <td class="border" style="padding:6px">ADDRESS:</td>
-                            <td class="border" style="padding:6px">{{$invoice->w1_address}}</td>
+                            <td class="border" style="padding:6px;width:30%">ADDRESS:</td>
+                            <td class="border" style="padding:6px;width:70%">{{$invoice->w1_address}}</td>
                         </tr>
                         <tr>
-                            <td class="border" style="padding:6px">CONTACT:</td>
-                            <td class="border" style="padding:6px">{{$invoice->w1_phone}}</td>
+                            <td class="border" style="padding:6px;width:30%">CONTACT:</td>
+                            <td class="border" style="padding:6px;width:70%">{{$invoice->w1_phone}}</td>
                         </tr>
                     </table>
                 </div>
@@ -355,20 +355,20 @@
                     <h4>BUYER WITNESS:</h4>
                     <table>
                         <tr>
-                            <td class="border" style="padding:6px">NAME:</td>
-                            <td class="border" style="padding:6px">{{$invoice->w2_name}}</td>
+                            <td class="border" style="padding:6px;width:30%">NAME:</td>
+                            <td class="border" style="padding:6px;width:70%">{{$invoice->w2_name}}</td>
                         </tr>
                         <tr>
-                            <td class="border" style="padding:6px">FATHER:</td>
-                            <td class="border" style="padding:6px">{{$invoice->w2_father}}</td>
+                            <td class="border" style="padding:6px;width:30%">FATHER:</td>
+                            <td class="border" style="padding:6px;width:70%">{{$invoice->w2_father}}</td>
                         </tr>
                         <tr>
-                            <td class="border" style="padding:6px">ADDRESS:</td>
-                            <td class="border" style="padding:6px">{{$invoice->w2_address}}</td>
+                            <td class="border" style="padding:6px;width:30%">ADDRESS:</td>
+                            <td class="border" style="padding:6px;width:70%">{{$invoice->w2_address}}</td>
                         </tr>
                         <tr>
-                            <td class="border" style="padding:6px">CONTACT:</td>
-                            <td class="border" style="padding:6px">{{$invoice->w2_phone}}</td>
+                            <td class="border" style="padding:6px;width:30%">CONTACT:</td>
+                            <td class="border" style="padding:6px;width:70%">{{$invoice->w2_phone}}</td>
                     </table>
                 </div>
             </div>
