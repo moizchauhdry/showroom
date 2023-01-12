@@ -63,7 +63,7 @@
 <body>
     <div class="row">
         <div style="float: left">
-            <img src="http://moizchauhdry.esavercargo.com/images/logo.png" alt="" style="width:100px">
+            <img src="https://pak-motors.com/images/logo.png" alt="" style="width:100px">
         </div>
         <div style="float: right">
             <table style="font-size:8px">
