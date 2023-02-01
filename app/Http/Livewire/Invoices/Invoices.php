@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Invoices;
 
 use Livewire\Component;
 use App\Models\Invoice;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
 
@@ -60,6 +61,12 @@ class Invoices extends Component
         'delete-invoice' => 'delete',
     ];
 
+    public function mount()
+    {
+        $this->inv_date = Carbon::parse(Carbon::now())->format('Y-m-d');
+        $this->inv_time = date('H:i', strtotime(Carbon::now() . ' + 5 hours'));
+    }
+
     public function render()
     {
         $invoices = Invoice::orderBy('id', 'desc')->where('reg_no', 'LIKE', '%' . $this->search . '%')->paginate(10);
@@ -106,8 +113,8 @@ class Invoices extends Component
         $this->w2_address = '';
         $this->s_commission = '';
         $this->b_commission = '';
-        $this->inv_date = '';
-        $this->inv_time = '';
+
+        $this->mount();
         $this->resetValidation();
     }
 
