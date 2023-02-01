@@ -178,7 +178,7 @@
                             <div class="col-md-6 form-group mb-2">
                                 <label for="amount_words">Amount <small>(Words)</small></label>
                                 <input type="text" class="form-control form-control-sm" wire:model="amount_words"
-                                    id="amount_words" readonly>
+                                    id="amount_words">
                                 @error('amount_words') <span class="text-danger">{{ $message }}</span>@enderror
                             </div>
                         </div>
@@ -257,6 +257,18 @@
                                 <input type="text" class="form-control form-control-sm" wire:model="b_commission"
                                     id="b_commission">
                                 @error('b_commission') <span class="text-danger">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="col-md-3 form-group mb-2">
+                                <label for="inv_date">Invoice Date</label>
+                                <input type="date" class="form-control form-control-sm" wire:model="inv_date"
+                                    id="inv_date">
+                                @error('inv_date') <span class="text-danger">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="col-md-3 form-group mb-2">
+                                <label for="inv_time">Invoice Time</label>
+                                <input type="time" class="form-control form-control-sm" wire:model="inv_time"
+                                    id="inv_time">
+                                @error('inv_time') <span class="text-danger">{{ $message }}</span>@enderror
                             </div>
                         </div>
                     </div>

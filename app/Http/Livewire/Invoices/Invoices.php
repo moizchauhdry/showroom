@@ -52,7 +52,9 @@ class Invoices extends Component
         $w2_phone,
         $w2_address,
         $s_commission,
-        $b_commission;
+        $b_commission,
+        $inv_date,
+        $inv_time;
 
     protected $listeners = [
         'delete-invoice' => 'delete',
@@ -102,6 +104,10 @@ class Invoices extends Component
         $this->w2_father = '';
         $this->w2_phone = '';
         $this->w2_address = '';
+        $this->s_commission = '';
+        $this->b_commission = '';
+        $this->inv_date = '';
+        $this->inv_time = '';
         $this->resetValidation();
     }
 
@@ -143,6 +149,8 @@ class Invoices extends Component
             'w2_address' => ['nullable', 'string', 'max:255'],
             's_commission' => ['required', 'numeric'],
             'b_commission' => ['required', 'numeric'],
+            'inv_date' => ['required'],
+            'inv_time' => ['required'],
         ], [
             'required' => 'This field is required.',
             'numeric' => 'The data must be a number.',
@@ -184,6 +192,8 @@ class Invoices extends Component
             'w2_address' => $data['w2_address'],
             's_commission' => $data['s_commission'],
             'b_commission' => $data['b_commission'],
+            'inv_date' => $data['inv_date'],
+            'inv_time' => $data['inv_time'],
             'created_by' => Auth::user()->id,
             'updated_by' => Auth::user()->id,
         ]);
@@ -233,6 +243,8 @@ class Invoices extends Component
         $this->w2_address = $invoice->w2_address;
         $this->s_commission = $invoice->s_commission;
         $this->b_commission = $invoice->b_commission;
+        $this->inv_date = $invoice->inv_date;
+        $this->inv_time = $invoice->inv_time;
     }
 
     public function cancel()
@@ -279,6 +291,8 @@ class Invoices extends Component
             'w2_address' => ['nullable', 'string', 'max:255'],
             's_commission' => ['required', 'numeric'],
             'b_commission' => ['required', 'numeric'],
+            'inv_date' => ['required'],
+            'inv_time' => ['required'],
         ], [
             'required' => 'This field is required.',
             'numeric' => 'The data must be a number.',
@@ -322,6 +336,8 @@ class Invoices extends Component
                 'w2_address' => $this->w2_address,
                 's_commission' => $this->s_commission,
                 'b_commission' => $this->b_commission,
+                'inv_date' => $this->inv_date,
+                'inv_time' => $this->inv_time,
                 'updated_by' => Auth::user()->id,
             ]);
 
@@ -361,6 +377,7 @@ class Invoices extends Component
 
     public function amountInWords()
     {
+        $this->amount_words = '';
         $this->amount_words = convertNumbersToWords($this->amount);
     }
 }

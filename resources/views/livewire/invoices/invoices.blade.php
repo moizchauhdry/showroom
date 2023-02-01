@@ -47,7 +47,8 @@
                     <td class="hidden">{{ $invoice->b_name}}</td>
                     <td class="hidden">{{$invoice->amount}}</td>
                     <td class="hidden">
-                        {{$invoice->created_at->format('F d, Y')}} | {{$invoice->created_at->format('h:i A')}}</td>
+                        {{getDateByFormat($invoice->inv_date)}} | {{getTimeByFormat($invoice->inv_time)}}
+                    </td>
                     <td>
 
                         <button wire:click="edit({{ $invoice->id }})" class="btn btn-primary btn-sm"

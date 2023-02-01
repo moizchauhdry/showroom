@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 if (!function_exists('clean_string')) {
     function clean_string($string)
     {
@@ -58,5 +60,38 @@ if (!function_exists('convertNumbersToWords')) {
         } catch (\Throwable $th) {
             //throw $th;
         }
+    }
+}
+
+if (!function_exists('getDateByFormat')) {
+    function getDateByFormat($date)
+    {
+        $result = NULL;
+        if (isset($date)) {
+            $result = Carbon::parse($date)->format('F d, Y');
+        }
+        return $result;
+    }
+}
+
+if (!function_exists('getTimeByFormat')) {
+    function getTimeByFormat($time)
+    {
+        $result = NULL;
+        if (isset($time)) {
+            return Carbon::parse($time)->format('h:i A');
+        }
+        return $result;
+    }
+}
+
+if (!function_exists('getDayByFormat')) {
+    function getDayByFormat($date)
+    {
+        $result = NULL;
+        if (isset($date)) {
+            return Carbon::parse($date)->format('l');
+        }
+        return $result;
     }
 }

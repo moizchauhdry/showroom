@@ -69,18 +69,21 @@
             <table style="font-size:8px">
                 <tr>
                     <td class="border" style="padding:2px">DATE</td>
-                    <td class="border" style="padding-left:5px; padding-right:15px">{{$invoice->created_at->format('F d,
-                        Y')}}</td>
+                    <td class="border" style="padding-left:5px; padding-right:15px">
+                        {{getDateByFormat($invoice->inv_date)}}
+                    </td>
                 </tr>
                 <tr>
                     <td class="border" style="padding:2px">TIME</td>
                     <td class="border" style="padding-left:5px; padding-right:15px">
-                        {{$invoice->created_at->format('h:i A - l')}}</td>
+                        {{getTimeByFormat($invoice->inv_time)}} - {{getDayByFormat($invoice->inv_date)}}
+                    </td>
                 </tr>
                 <tr>
                     <td class="border" style="padding:2px">INVOICE BY</td>
                     <td class="border" style="padding-left:5px; padding-right:15px">
-                        {{$invoice->createdbyUser->name ?? NULL}}</td>
+                        {{$invoice->createdbyUser->name ?? NULL}}
+                    </td>
                 </tr>
             </table>
         </div>
