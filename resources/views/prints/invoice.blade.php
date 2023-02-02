@@ -51,7 +51,8 @@
 
         .dynamic {
             padding-left: 10px;
-            font-size: 14px
+            font-size: 14px;
+            text-transform: capitalize
         }
 
         .border {

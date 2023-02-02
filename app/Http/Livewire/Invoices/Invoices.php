@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Invoice;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Livewire\WithPagination;
 
 class Invoices extends Component
@@ -120,7 +121,7 @@ class Invoices extends Component
 
     public function store()
     {
-        $data = $this->validate([
+        $rules = [
             's_name' => ['required', 'string', 'max:255'],
             's_father' => ['required', 'string', 'max:255'],
             's_cnic' => ['required', 'string', 'max:255'],
@@ -158,49 +159,61 @@ class Invoices extends Component
             'b_commission' => ['required', 'numeric'],
             'inv_date' => ['required'],
             'inv_time' => ['required'],
-        ], [
+        ];
+
+        $messages = [
             'required' => 'This field is required.',
             'numeric' => 'The data must be a number.',
-        ]);
+        ];
 
-        $invoice = Invoice::create([
-            's_name' => $data['s_name'],
-            's_father' => $data['s_father'],
-            's_cnic' => $data['s_cnic'],
-            's_phone' => $data['s_phone'],
-            's_address' => $data['s_address'],
-            'b_name' => $data['b_name'],
-            'b_father' => $data['b_father'],
-            'b_cnic' => $data['b_cnic'],
-            'b_phone' => $data['b_phone'],
-            'b_address' => $data['b_address'],
-            'reg_no' => $data['reg_no'],
-            'chassis_no' => $data['chassis_no'],
-            'engine_no' => $data['engine_no'],
-            'mark' => $data['mark'],
-            'hp' => $data['hp'],
-            'model' => $data['model'],
-            'kota' => $data['kota'],
-            'post_office' => $data['post_office'],
-            'reg_book' => $data['reg_book'],
-            'reg_file' => $data['reg_file'],
-            'file_pg' => $data['file_pg'],
-            'no_plate' => $data['no_plate'],
-            'car_color' => $data['car_color'],
-            'amount' => $data['amount'],
-            'amount_words' => $data['amount_words'],
-            'w1_name' => $data['w1_name'],
-            'w1_father' => $data['w1_father'],
-            'w1_phone' => $data['w1_phone'],
-            'w1_address' => $data['w1_address'],
-            'w2_name' => $data['w2_name'],
-            'w2_father' => $data['w2_father'],
-            'w2_phone' => $data['w2_phone'],
-            'w2_address' => $data['w2_address'],
-            's_commission' => $data['s_commission'],
-            'b_commission' => $data['b_commission'],
-            'inv_date' => $data['inv_date'],
-            'inv_time' => $data['inv_time'],
+        $data = [
+            's_name' => $this->s_name,
+            's_father' => $this->s_father,
+            's_cnic' => $this->s_cnic,
+            's_phone' => $this->s_phone,
+            's_address' => $this->s_address,
+            'b_name' => $this->b_name,
+            'b_father' => $this->b_father,
+            'b_cnic' => $this->b_cnic,
+            'b_phone' => $this->b_phone,
+            'b_address' => $this->b_address,
+            'reg_no' => $this->reg_no,
+            'chassis_no' => $this->chassis_no,
+            'engine_no' => $this->engine_no,
+            'mark' => $this->mark,
+            'hp' => $this->hp,
+            'model' => $this->model,
+            'kota' => $this->kota,
+            'post_office' => $this->post_office,
+            'reg_book' => $this->reg_book,
+            'reg_file' => $this->reg_file,
+            'file_pg' => $this->file_pg,
+            'no_plate' => $this->no_plate,
+            'car_color' => $this->car_color,
+            'amount' => $this->amount,
+            'amount_words' => $this->amount_words,
+            'w1_name' => $this->w1_name,
+            'w1_father' => $this->w1_father,
+            'w1_phone' => $this->w1_phone,
+            'w1_address' => $this->w1_address,
+            'w2_name' => $this->w2_name,
+            'w2_father' => $this->w2_father,
+            'w2_phone' => $this->w2_phone,
+            'w2_address' => $this->w2_address,
+            's_commission' => $this->s_commission,
+            'b_commission' => $this->b_commission,
+            'inv_date' => $this->inv_date,
+            'inv_time' => $this->inv_time,
+        ];
+
+        $validator = Validator::make($data, $rules, $messages);
+
+        if ($validator->fails()) {
+            $this->emit('reset-mask-values');
+        }
+
+        $invoice = Invoice::create($validator->validate());
+        $invoice->update([
             'created_by' => Auth::user()->id,
             'updated_by' => Auth::user()->id,
         ]);
@@ -384,7 +397,6 @@ class Invoices extends Component
 
     public function amountInWords()
     {
-        $this->amount_words = '';
         $this->amount_words = convertNumbersToWords($this->amount);
     }
 }
