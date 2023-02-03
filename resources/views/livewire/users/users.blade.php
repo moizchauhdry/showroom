@@ -38,7 +38,11 @@
                 @forelse($users as $user)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $user->name }}</td>
+                    <td>
+                        <img src="{{ Avatar::create($user->name)->setBackground('#001122')->setDimension(40)->setFontSize(15)->toBase64() }}"
+                            class="me-1" />
+                        {{ $user->name }}
+                    </td>
                     <td>{{ $user->email }}</td>
                     <td class="text-capitalize">{{ $user->roles[0]->name }}</td>
                     <td class="text-capitalize"><span class="badge text-bg-{{$user->status ? 'success' :

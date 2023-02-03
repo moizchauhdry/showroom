@@ -25,6 +25,7 @@
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{asset('plugins/sweetalert2/sweetalert2.min.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Laravolt" rel="stylesheet">
     @livewireStyles
 
 </head>
