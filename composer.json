@@ -19,6 +19,7 @@
         "laravolt/avatar": "^4.1",
         "livewire/livewire": "^2.10",
         "owen-it/laravel-auditing": "^13.0",
+        "spatie/laravel-backup": "^6.16",
         "spatie/laravel-permission": "^5.7",
         "twbs/bootstrap-icons": "^1.10"
     },
