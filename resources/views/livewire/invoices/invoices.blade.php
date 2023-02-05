@@ -23,7 +23,7 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table table-bordered text-center">
+        <table class="table table-bordered text-center text-capitalize">
 
             <thead class="bg-success text-white">
                 <tr>
