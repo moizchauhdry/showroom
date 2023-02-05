@@ -173,128 +173,125 @@
                         </div>
                         <div class="col-md-3 form-group mb-2">
                             <label for="amount">Amount <small>(Digits)</small></label>
-                            <input wire:keyup="amountInWords" type="number" class="form-control form-control-sm"
-                                wire:model.defer="amount">
+                            <input type="number" class="form-control form-control-sm" wire:model.defer="amount">
                             @error('amount') <span class="text-danger">{{ $message }}</span>@enderror
                         </div>
-                        <div class="col-md-6 form-group mb-2">
+                        {{-- <div class="col-md-6 form-group mb-2">
                             <label for="amount_words">Amount <small>(Words)</small></label>
                             <input type="text" class="form-control form-control-sm" wire:model.defer="amount_words"
                                 id="amount_words">
                             @error('amount_words') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
+                    </div> --}}
                 </div>
-
-                <h6 class="text-center"><strong><u>Seller Witness</u></strong></h6>
-                <div class="card p-3 mb-4">
-                    <div class="row">
-                        <div class="col-md-3 form-group mb-2">
-                            <label for="w1_name">Name</label>
-                            <input type="text" class="form-control form-control-sm" wire:model.defer="w1_name"
-                                id="w1_name">
-                            @error('w1_name') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-md-3 form-group mb-2">
-                            <label for="w1_father">Father</label>
-                            <input type="text" class="form-control form-control-sm" wire:model.defer="w1_father"
-                                id="w1_father">
-                            @error('w1_father') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-md-3 form-group mb-2">
-                            <label for="w1_phone">Phone</label>
-                            <input type="text" class="form-control form-control-sm phone" wire:model.defer="w1_phone"
-                                id="w1_phone">
-                            @error('w1_phone') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-md-3 form-group mb-2">
-                            <label for="w1_address">Address</label>
-                            <input type="text" class="form-control form-control-sm" wire:model.defer="w1_address"
-                                id="w1_address">
-                            @error('w1_address') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
-                </div>
-
-                <h6 class="text-center"><strong><u>Buyer Witness</u></strong></h6>
-                <div class="card p-3 mb-4">
-                    <div class="row">
-                        <div class="col-md-3 form-group mb-2">
-                            <label for="w2_name">Name</label>
-                            <input type="text" class="form-control form-control-sm" wire:model.defer="w2_name"
-                                id="w2_name">
-                            @error('w2_name') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-md-3 form-group mb-2">
-                            <label for="w2_father">Father</label>
-                            <input type="text" class="form-control form-control-sm" wire:model.defer="w2_father"
-                                id="w2_father">
-                            @error('w2_father') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-md-3 form-group mb-2">
-                            <label for="w2_phone">Phone</label>
-                            <input type="text" class="form-control form-control-sm phone" wire:model.defer="w2_phone"
-                                id="w2_phone">
-                            @error('w2_phone') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-md-3 form-group mb-2">
-                            <label for="w2_address">Address</label>
-                            <input type="text" class="form-control form-control-sm" wire:model.defer="w2_address"
-                                id="w2_address">
-                            @error('w2_address') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card p-3 mb-4">
-                    <div class="row">
-                        <div class="col-md-3 form-group mb-2">
-                            <label for="s_commission">Buyer Commission</label>
-                            <input type="number" class="form-control form-control-sm" wire:model.defer="s_commission"
-                                id="s_commission">
-                            @error('s_commission') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-md-3 form-group mb-2">
-                            <label for="b_commission">Seller Commission</label>
-                            <input type="number" class="form-control form-control-sm" wire:model.defer="b_commission"
-                                id="b_commission">
-                            @error('b_commission') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-md-3 form-group mb-2">
-                            <label for="inv_date">Invoice Date</label>
-                            <input type="date" class="form-control form-control-sm" wire:model.defer="inv_date"
-                                id="inv_date">
-                            @error('inv_date') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-md-3 form-group mb-2">
-                            <label for="inv_time">Invoice Time</label>
-                            <input type="time" class="form-control form-control-sm" wire:model.defer="inv_time"
-                                id="inv_time">
-                            @error('inv_time') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
-                </div>
-
-                @if ($errors->any())
-                <div class="alert alert-danger text-center">
-                    <span class="text-center"><i class="bi bi-exclamation-octagon me-1"></i> Validation Error: The data
-                        you have entered is invalid or incomplete.</span>
-                </div>
-                @endif
             </div>
-            <div class="modal-footer">
-                <button type="button" wire:click.prevent="cancel()" class="btn btn-danger"
-                    data-bs-dismiss="modal">Cancel</button>
-                @if ($updateMode)
-                <button type="button" wire:click.prevent="update()" class="btn btn-primary">Save
-                    & Update</button>
-                @else
-                <button type="button" wire:click.prevent="store()" class="btn btn-primary">Save &
-                    Submit</button>
-                @endif
+
+            <h6 class="text-center"><strong><u>Seller Witness</u></strong></h6>
+            <div class="card p-3 mb-4">
+                <div class="row">
+                    <div class="col-md-3 form-group mb-2">
+                        <label for="w1_name">Name</label>
+                        <input type="text" class="form-control form-control-sm" wire:model.defer="w1_name" id="w1_name">
+                        @error('w1_name') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-md-3 form-group mb-2">
+                        <label for="w1_father">Father</label>
+                        <input type="text" class="form-control form-control-sm" wire:model.defer="w1_father"
+                            id="w1_father">
+                        @error('w1_father') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-md-3 form-group mb-2">
+                        <label for="w1_phone">Phone</label>
+                        <input type="text" class="form-control form-control-sm phone" wire:model.defer="w1_phone"
+                            id="w1_phone">
+                        @error('w1_phone') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-md-3 form-group mb-2">
+                        <label for="w1_address">Address</label>
+                        <input type="text" class="form-control form-control-sm" wire:model.defer="w1_address"
+                            id="w1_address">
+                        @error('w1_address') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                </div>
             </div>
+
+            <h6 class="text-center"><strong><u>Buyer Witness</u></strong></h6>
+            <div class="card p-3 mb-4">
+                <div class="row">
+                    <div class="col-md-3 form-group mb-2">
+                        <label for="w2_name">Name</label>
+                        <input type="text" class="form-control form-control-sm" wire:model.defer="w2_name" id="w2_name">
+                        @error('w2_name') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-md-3 form-group mb-2">
+                        <label for="w2_father">Father</label>
+                        <input type="text" class="form-control form-control-sm" wire:model.defer="w2_father"
+                            id="w2_father">
+                        @error('w2_father') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-md-3 form-group mb-2">
+                        <label for="w2_phone">Phone</label>
+                        <input type="text" class="form-control form-control-sm phone" wire:model.defer="w2_phone"
+                            id="w2_phone">
+                        @error('w2_phone') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-md-3 form-group mb-2">
+                        <label for="w2_address">Address</label>
+                        <input type="text" class="form-control form-control-sm" wire:model.defer="w2_address"
+                            id="w2_address">
+                        @error('w2_address') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-3 mb-4">
+                <div class="row">
+                    <div class="col-md-3 form-group mb-2">
+                        <label for="s_commission">Buyer Commission</label>
+                        <input type="number" class="form-control form-control-sm" wire:model.defer="s_commission"
+                            id="s_commission">
+                        @error('s_commission') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-md-3 form-group mb-2">
+                        <label for="b_commission">Seller Commission</label>
+                        <input type="number" class="form-control form-control-sm" wire:model.defer="b_commission"
+                            id="b_commission">
+                        @error('b_commission') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-md-3 form-group mb-2">
+                        <label for="inv_date">Invoice Date</label>
+                        <input type="date" class="form-control form-control-sm" wire:model.defer="inv_date"
+                            id="inv_date">
+                        @error('inv_date') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-md-3 form-group mb-2">
+                        <label for="inv_time">Invoice Time</label>
+                        <input type="time" class="form-control form-control-sm" wire:model.defer="inv_time"
+                            id="inv_time">
+                        @error('inv_time') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                </div>
+            </div>
+
+            @if ($errors->any())
+            <div class="alert alert-danger text-center">
+                <span class="text-center"><i class="bi bi-exclamation-octagon me-1"></i> Validation Error: The data
+                    you have entered is invalid or incomplete.</span>
+            </div>
+            @endif
+        </div>
+        <div class="modal-footer">
+            <button type="button" wire:click.prevent="cancel()" class="btn btn-danger"
+                data-bs-dismiss="modal">Cancel</button>
+            @if ($updateMode)
+            <button type="button" wire:click.prevent="update()" class="btn btn-primary">Save
+                & Update</button>
+            @else
+            <button type="button" wire:click.prevent="store()" class="btn btn-primary">Save &
+                Submit</button>
+            @endif
         </div>
     </div>
+</div>
 </div>
 
 @push('js')
