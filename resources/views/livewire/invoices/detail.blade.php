@@ -249,6 +249,19 @@
                                         id="b_commission">
                                     @error('b_commission') <span class="text-danger">{{ $message }}</span>@enderror
                                 </div>
+
+                                <div class="col-md-3 form-group mb-2">
+                                    <label for="inv_date">Invoice Date</label>
+                                    <input type="date" class="form-control form-control-sm" wire:model.defer="inv_date"
+                                        id="inv_date">
+                                    @error('inv_date') <span class="text-danger">{{ $message }}</span>@enderror
+                                </div>
+                                <div class="col-md-3 form-group mb-2">
+                                    <label for="inv_time">Invoice Time</label>
+                                    <input type="time" class="form-control form-control-sm" wire:model.defer="inv_time"
+                                        id="inv_time">
+                                    @error('inv_time') <span class="text-danger">{{ $message }}</span>@enderror
+                                </div>
                             </div>
                         </div>
                     </fieldset>

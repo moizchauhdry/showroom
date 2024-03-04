@@ -70,7 +70,13 @@ class Invoices extends Component
 
     public function render()
     {
-        $invoices = Invoice::orderBy('id', 'desc')->where('reg_no', 'LIKE', '%' . $this->search . '%')->paginate(10);
+        // $invoices = Invoice::orderBy('id', 'desc')->where('reg_no', 'LIKE', '%' . $this->search . '%')->paginate(10);
+
+        $searchTerm = preg_replace('/[^a-zA-Z0-9]/', '', $this->search);
+        $invoices = Invoice::orderBy('id', 'desc')
+            ->whereRaw("REGEXP_REPLACE(reg_no, '[^a-zA-Z0-9]', '') LIKE '%" . $searchTerm . "%'")
+            ->paginate(10);
+
 
         return view('livewire.invoices.invoices', [
             'invoices' => $invoices,
